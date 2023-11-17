@@ -9,6 +9,4 @@ const register = async (data:any) => {
     console.log(error);
     }
 };
-
-
 export default register;
