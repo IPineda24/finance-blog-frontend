@@ -1,22 +1,26 @@
 'use client'
 import register from '@/app/api/auth/register';
 import { Button, Checkbox, Form, Input } from 'antd';
+import Swal from 'sweetalert2';
 
 
 export default function Page() {
 
-  const onFinish = async ( values: any ) => {
-    console.log( 'Success:', values );
+  const onFinish = ( values: any ) => {
     const registerData = {
       username: values.username,
       email: values.email,
       password: values.password
     }
-    await register( registerData );
+    register( registerData );
   };
 
   const onFinishFailed = ( errorInfo: any ) => {
-    console.log( 'Failed:', errorInfo );
+    Swal.fire( {
+      icon: "error",
+      title: "Ups...",
+      text: "El usuario, correo o la contraseña son incorrectos",
+    } );
   };
 
   type FieldType = {
@@ -25,9 +29,6 @@ export default function Page() {
     password?: string;
     remember?: string;
   };
-
-
-
 
   return (
     <div>
