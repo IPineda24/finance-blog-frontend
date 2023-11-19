@@ -1,21 +1,24 @@
 'use client'
 import login from '@/app/api/auth/login';
-import React, { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+import Swal from 'sweetalert2';
 
 export default function Page() {
-    const onFinish = async ( values: any ) => {
-        console.log( 'Success:', values );
+    const onFinish = ( values: any ) => {
         const userData = {
             email: values.email,
             password: values.password
         }
-        await login( userData );
-
+        login( userData );
     };
 
     const onFinishFailed = ( errorInfo: any ) => {
-        console.log( 'Failed:', errorInfo );
+        Swal.fire( {
+            icon: "error",
+            title: "Ups...",
+            text: "El usuario o la contraseña son incorrectos",
+        } );
+
     };
 
     type FieldType = {
