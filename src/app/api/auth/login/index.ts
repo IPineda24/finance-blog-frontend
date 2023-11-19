@@ -7,10 +7,11 @@ const login = async ( data: any ) => {
     try {
         const response = await axios.post( `${baseUrl}/auth/log-in`, data );
         Swal.fire({
-        title: "Inicio de sesion con exito",
-        icon: "success"
+            title: "Inicio de sesión exitoso.",
+            text: "Redireccionando a la pantalla principal",
+            icon: "success"
 });
-        setCookies( response.data.access_token );
+        setCookies(  response.data.access_token.toString() );
         const origin = window.location.origin;
         const loginUrl = `${origin}/dashboard`;
 
@@ -23,7 +24,7 @@ const login = async ( data: any ) => {
             Swal.fire({
             icon: "error",
             title: "Ups...",
-            text: "El usuario o la contraseña son incorrectos",
+            text: "El usuario o la contraseña son incorrectos.",
             footer: `${error}`,
             } );
     }

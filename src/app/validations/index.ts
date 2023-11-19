@@ -1,9 +1,9 @@
-'use server'
-import { cookies } from 'next/headers'
+import getToken from "@/app/utils/toke";
+
 const session = async () => {
-const cookieStore = cookies()
-    const token = cookieStore.get( 'token' );
-    if ( !token ) {
+    const token =  getToken();
+
+    if (await !token ) {
             return false;
         }else{
             return true;
