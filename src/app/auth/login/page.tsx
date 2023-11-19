@@ -45,7 +45,7 @@ export default function Page() {
                 <Form.Item<FieldType>
                     label="email"
                     name="email"
-                    rules={[{ required: true, message: 'Please input your email!' }, { type: 'email' }, { whitespace: false }, { pattern: /^\S+@\S+\.\S+$/, message: 'El email no puede contener espacios en blanco.' }, { max: 50 }]}
+                    rules={[{ required: true, message: 'Please input your email!' }, { max: 50 }]}
                 >
                     <Input />
                 </Form.Item>
@@ -53,7 +53,7 @@ export default function Page() {
                 <Form.Item<FieldType>
                     label="Password"
                     name="password"
-                    rules={[{ required: true, message: 'Please input your password!' }, { min: 6 }, { max: 20 }, { type: 'string' }, { whitespace: false }, { pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/, message: 'La contraseña debe contener al menos 6 caracteres, incluyendo mayúsculas/minúsculas y números.' }]}
+                    rules={[{ required: true, message: 'Please input your password!' }]}
                 >
                     <Input.Password />
                 </Form.Item>
