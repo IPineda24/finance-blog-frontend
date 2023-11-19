@@ -1,16 +1,18 @@
 'use client'
+
 import login from '@/app/api/auth/login';
 import { Button, Checkbox, Form, Input } from 'antd';
 import Swal from 'sweetalert2';
 
 export default function Page() {
-    const onFinish = ( values: any ) => {
+    const onFinish = async ( values: any ) => {
         const userData = {
             email: values.email,
-            password: values.password
-        }
+            password: values.password,
+        };
         login( userData );
     };
+
 
     const onFinishFailed = ( errorInfo: any ) => {
         Swal.fire( {
@@ -68,6 +70,7 @@ export default function Page() {
                     <Button type="primary" htmlType="submit">
                         Submit
                     </Button>
+
                 </Form.Item>
             </Form>
         </div>
