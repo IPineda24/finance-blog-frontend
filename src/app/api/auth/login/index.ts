@@ -24,7 +24,7 @@ const login = async ( data: any ) => {
             Swal.fire({
             icon: "error",
             title: "Ups...",
-            text: "El usuario o la contraseña son incorrectos.",
+            text: "Las credenciales son incorrectas.",
             footer: `${error}`,
             } );
     }
