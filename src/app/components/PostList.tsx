@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 
 const PostList = ( { posts }: any ) => {
     // Estado local para manejar los likes y el estado del botón de "Like"
@@ -33,8 +34,8 @@ const PostList = ( { posts }: any ) => {
                     <div className="p-4">
                         <div className="flex items-center mb-2">
                             <div>
-                                <p className="text-sm font-medium">{post.createdBy.username}</p>
-                                <p className="text-xs text-gray-500">{post.createdAt}</p>
+                                <p className="text-sm font-semibold text-gray-600">{post.createdBy.username}</p>
+                                <p className="text-xs text-gray-500">{format( new Date( post.createdAt ), 'dd/MM/yyyy h:mm a' )}</p>
                             </div>
                         </div>
                         <h2 className="text-lg font-semibold mb-2">{post.title}</h2>

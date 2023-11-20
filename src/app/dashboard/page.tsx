@@ -13,11 +13,17 @@ export default async function dashboard() {
         );
 
     } else {
-        Swal.fire( {
-            icon: "error",
-            title: "Ups...",
-            text: "no se pudo obtener los post",
-        } );
-        return <div className='w-full flex justify-center items-center text-white'><h1>no se pudo obtener los post</h1></div>;
+        const failAlert = () => {
+            Swal.fire( {
+                icon: "error",
+                title: "Ups...",
+                text: "Error al obtener los post",
+            } );
+        }
+        failAlert();
+        return <div className='w-full flex justify-center items-center text-white'>
+            <h1 className="text-2xl mt-8 font-bold text-white text-center  mb-6 h-2 bg-green-800">Ups... error al obtener los post</h1>
+
+        </div>;
     }
 }
