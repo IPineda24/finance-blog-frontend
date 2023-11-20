@@ -6,8 +6,8 @@ export default async function dashboard() {
     const posts = getPost( 1 );
     if ( await posts ) {
         return (
-            <div>
-                <h1>Posts</h1>
+            <div className='bg-gray-800'>
+                <h1 className="text-2xl font-bold text-white text-center  mb-6 h-2 bg-green-800"></h1>
                 <PostList posts={await posts} />
             </div>
         );
@@ -18,6 +18,6 @@ export default async function dashboard() {
             title: "Ups...",
             text: "no se pudo obtener los post",
         } );
-        return <div>no se pudo obtener los post</div>;
+        return <div className='w-full flex justify-center items-center text-white'><h1>no se pudo obtener los post</h1></div>;
     }
 }

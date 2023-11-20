@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import session from '../validations'
+import Nav from '@/app/components/Nav'
 
 
 const inter = Inter( { subsets: ['latin'] } )
@@ -20,8 +21,11 @@ export default async function RootLayout( {
     const isLogin = session();
     if ( await isLogin ) {
         return (
-            <html lang="en">
-                <body className={inter.className}>{children}</body>
+            <html lang="en" className='bg-gray-800'>
+
+                <body className={inter.className}>
+                    <header className='w-full'><Nav /></header>
+                    {children}</body>
             </html>
         )
     } else {
