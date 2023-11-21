@@ -5,8 +5,13 @@ import Swal from 'sweetalert2';
 import Image from 'next/image'
 import './main.css';
 
+interface FormValues {
+    email: string;
+    password: string;
+}
+
 export default function Page() {
-    const onFinish = async ( values: any ) => {
+    const onFinish = async ( values: FormValues ) => {
         const userData = {
             email: values.email,
             password: values.password,
@@ -14,7 +19,7 @@ export default function Page() {
         login( userData );
     };
 
-    const onFinishFailed = ( errorInfo: any ) => {
+    const onFinishFailed = ( errorInfo: object ) => {
         Swal.fire( {
             icon: 'error',
             title: 'Ups...',

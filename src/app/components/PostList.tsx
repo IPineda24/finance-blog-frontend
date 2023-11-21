@@ -1,10 +1,25 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
+interface Post {
+    id: number;
+    title: string;
+    description: string;
+    likes: number;
+    createdAt: string;
+    createdBy: {
+        id: number;
+        username: string;
+    };
+}
+interface PostListProps {
+    posts: Post[];
+}
 
-const PostList = ( { posts }: any ) => {
+
+const PostList: React.FC<PostListProps> = ( { posts } ) => {
     // Estado local para manejar los likes y el estado del botón de "Like"
-    const [likes, setLikes] = useState<number[]>( posts.map( ( post: any ) => post.likes ) );
+    const [likes, setLikes] = useState<number[]>( posts.map( ( post: Post ) => post.likes ) );
     const [likedPosts, setLikedPosts] = useState<boolean[]>( posts.map( () => false ) );
 
     // Función para manejar el clic en el botón "Like"
@@ -24,12 +39,12 @@ const PostList = ( { posts }: any ) => {
 
     // Puedes utilizar useEffect para actualizar los likes iniciales si cambian desde la API
     useEffect( () => {
-        setLikes( posts.map( ( post: any ) => post.likes ) );
+        setLikes( posts.map( ( post: Post ) => post.likes ) );
     }, [posts] );
 
     return (
         <div className="max-w-2xl mx-auto ">
-            {posts.map( ( post: any, index: number ) => (
+            {posts.map( ( post: Post, index: number ) => (
                 <div key={post.id} className="border bg-white border-gray-300 mb-4 rounded overflow-hidden">
                     <div className="p-4">
                         <div className="flex items-center mb-2">

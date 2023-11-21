@@ -5,8 +5,12 @@ import { Form, Input, Button, message } from 'antd';
 import createPost from '@/app/api/post/createPost';
 import './main.css';
 
+interface FormValues {
+    title: string;
+    description: string;
+}
 const CreatePost: React.FC = () => {
-    const onFinish = async ( values: { title: string; description: string } ) => {
+    const onFinish = async ( values: FormValues ) => {
         try {
             await createPost( values );
             message.success( 'Post creado exitosamente' );
