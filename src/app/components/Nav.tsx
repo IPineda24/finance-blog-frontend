@@ -76,7 +76,7 @@ const Nav: React.FC<User> = ( { user } ) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="#">
+                                <Link href="/dashboard/myPost">
                                     <div className="text-white block py-2 px-4 hover:bg-gray-700">Mis Post ❤️</div>
                                 </Link>
                             </li>
