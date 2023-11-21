@@ -17,7 +17,7 @@ export default async function DashboardLayout( {
 
                 <body>
                     <header >
-                        <Nav />
+                        <Nav user={await isLogin} />
                     </header>
                     {children}
                 </body>

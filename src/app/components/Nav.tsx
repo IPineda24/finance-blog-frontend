@@ -2,12 +2,26 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Image from 'next/image'
+import closeSession from '@/app/utils/deleteToken';
+interface User {
+    user: {
+        id: number;
+        username: string;
+    };
+}
 
-const Nav = () => {
+const Nav: React.FC<User> = ( { user } ) => {
+
     const [isMenuOpen, setIsMenuOpen] = useState( false );
 
     const toggleMenu = () => {
         setIsMenuOpen( !isMenuOpen );
+    };
+
+    const close = () => {
+
+        closeSession();
+
     };
 
     return (
@@ -15,12 +29,16 @@ const Nav = () => {
             <div>
                 <nav className="bg-gray-800 p-4">
                     <div className="container mx-auto flex justify-between items-center">
-                        <Image
-                            src="/logo.svg"
-                            alt="Fondo Verde"
-                            width={50}
-                            height={50}
-                        />
+                        <div className='flex justify-center items-center gap-2'>
+                            <Image
+                                src="/logo.svg"
+                                alt="Fondo Verde"
+                                width={50}
+                                height={50}
+                            />
+
+                            <div className='p-4 text-green-500'>{user.username}</div>
+                        </div>
 
                         {/* Menú de hamburguesa para dispositivos móviles */}
                         <div className="lg:hidden">
@@ -63,7 +81,9 @@ const Nav = () => {
                                 </Link>
                             </li>
                             <li className="md:ml-auto">
-                                <Link href="#">
+                                <Link
+                                    onClick={close}
+                                    href="/auth/login" >
                                     <div className="text-white block py-2 px-4 hover:bg-gray-700">Cerrar Sesión ☠️</div>
                                 </Link>
                             </li>
