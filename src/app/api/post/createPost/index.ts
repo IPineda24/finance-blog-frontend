@@ -4,8 +4,13 @@ import getToken from "@/app/utils/toke";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const createPost = async (postData: { title: string; description: string }) => {
-  try {
+interface PostData {
+    title: string;
+    description: string;
+    }
+
+const createPost = async (postData :PostData) => {
+    try {
     const token = await getToken();
     const response = await axios.post(`${baseUrl}/post`, postData, {
         headers: {
