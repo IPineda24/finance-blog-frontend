@@ -11,9 +11,11 @@
   "dependencies": {
     "antd": "^5.11.2",
     "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-window": "^1.8.9",
     "sweetalert2": "^11.10.0",
     "yarn": "^1.22.19"
   },
@@ -24,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-window": "^1.8.8",
     "autoprefixer": "^10.0.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",

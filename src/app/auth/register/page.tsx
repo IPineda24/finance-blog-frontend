@@ -4,7 +4,9 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import Swal from 'sweetalert2';
 
 
+
 export default function Page() {
+
 
   const onFinish = ( values: any ) => {
     const registerData = {
@@ -29,7 +31,6 @@ export default function Page() {
     password?: string;
     remember?: string;
   };
-
   return (
     <div>
       <Form

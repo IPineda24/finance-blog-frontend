@@ -7,13 +7,12 @@ const register = async ( data: object ) => {
 
     try {
         const response = await axios.post( `${baseUrl}/auth/register`, data );
-        //fixme: redireccionar a login
         const origin = window.location.origin;
         const loginUrl = `${origin}/auth/login`;
 
             Swal.fire({
-            title: "Cuanta creada con exito",
-            text: "redireccionando a login",
+            title: "Cuenta creada con éxito",
+            text: "Redireccionando al inicio de sesión",
             icon: "success"
             } );
         
@@ -25,7 +24,7 @@ const register = async ( data: object ) => {
             Swal.fire({
             icon: "error",
             title: "Ups...",
-            text: "El usuario o la contraseña ya existen",
+            text: "El usuario o el correo ya están registrados.",
             footer: `${error}`,
         });
     }
