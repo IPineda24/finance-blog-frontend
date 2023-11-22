@@ -4,6 +4,10 @@
 
 Welcome to the Finance Blog app! This application is built using [Next.js](https://nextjs.org/), a React framework, to provide a seamless and efficient web development experience. The app is designed for managing and sharing finance-related content.
 
+## Test cases
+
+- [QA File](https://docs.google.com/spreadsheets/d/1JG4MnH6oXDVCeNXVARIItZY-gZcEGBGP/edit?usp=drivesdk&ouid=106819772296659459521&rtpof=true&sd=true)
+
 ## Getting Started
 
 ### Prerequisites
