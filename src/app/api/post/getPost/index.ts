@@ -6,8 +6,7 @@ const getPost = async () => {
     try {
 
         const token = await getToken();
-    const response = await axios.get(
-    `${baseUrl}/post`,
+    const response = await axios.get(`${baseUrl}/post`,
     {
         headers: {
         'accept': '*',
