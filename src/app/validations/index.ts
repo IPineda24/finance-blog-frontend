@@ -13,9 +13,10 @@ const session = async () => {
         },
     }
         );
+        
         if (await !token ) {
             return false;
-        }else{
+        } else {
             return user.data;
         }
     } catch (error) {

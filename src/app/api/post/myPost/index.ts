@@ -3,7 +3,7 @@ import baseUrl from "@/app/utils/baseUrl";
 import getToken from "@/app/utils/toke";
 import axios from "axios";
 
-  interface Post {
+    interface Post {
         id: number;
         title: string;
         description: string;

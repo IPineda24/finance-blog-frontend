@@ -1,49 +1,68 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from 'react';
+import handleLikes from '@/app/api/post/like';
 import { format } from 'date-fns';
+
+
 interface Post {
     id: number;
     title: string;
     description: string;
     likes: number;
+    userId: string;
     createdAt: string;
     createdBy: {
-        id: number;
+        id: string;
         username: string;
+        email: string;
+        password: string;
+        createdAt: string;
+        deleted: boolean;
     };
+    receivedLikes: {
+        id: string;
+        userId: string;
+        postId: string;
+        createdAt: string;
+    }[];
 }
+
 interface PostListProps {
     posts: Post[];
 }
 
-
 const PostList: React.FC<PostListProps> = ( { posts } ) => {
-    // Estado local para manejar los likes y el estado del botón de "Like"
-    const [likes, setLikes] = useState<number[]>( posts.map( ( post: Post ) => post.likes ) );
-    const [likedPosts, setLikedPosts] = useState<boolean[]>( posts.map( () => false ) );
+    const [likes, setLikes] = useState<number[]>( [] );
+    const [likedPosts, setLikedPosts] = useState<boolean[]>( [] );
+    const userId = localStorage.getItem( 'userId' );
 
-    // Función para manejar el clic en el botón "Like"
-    const handleLike = ( index: number ) => {
-        const newLikes = [...likes];
-        const newLikedPosts = [...likedPosts];
+    const handleLike = async ( index: number, postId: number ) => {
+        try {
+            const updatedLikes = await handleLikes( postId );
+            const newLikes = [...likes];
+            const newLikedPosts = [...likedPosts];
 
-        // Incrementar o disminuir los likes según el estado actual
-        newLikes[index] = likedPosts[index] ? newLikes[index] - 1 : newLikes[index] + 1;
-        // Cambiar el estado del botón de "Like"
-        newLikedPosts[index] = !likedPosts[index];
+            newLikes[index] = updatedLikes;
+            newLikedPosts[index] = !likedPosts[index];
 
-        // Actualizar los estados
-        setLikes( newLikes );
-        setLikedPosts( newLikedPosts );
+            setLikes( newLikes );
+            setLikedPosts( newLikedPosts );
+        } catch ( error ) {
+            console.error( 'Error al dar like al post', error );
+        }
     };
 
-    // Puedes utilizar useEffect para actualizar los likes iniciales si cambian desde la API
     useEffect( () => {
-        setLikes( posts.map( ( post: Post ) => post.likes ) );
-    }, [posts] );
+        setLikes( posts.map( ( post ) => post.likes ) );
+        setLikedPosts(
+            posts.map( ( post ) =>
+                post.receivedLikes.some( ( like ) => like.userId === userId )
+            )
+        );
+    }, [posts, userId] );
 
     return (
-        <div className="max-w-2xl mx-auto ">
+        <div className="max-w-2xl mx-auto">
             {posts.map( ( post: Post, index: number ) => (
                 <div key={post.id} className="border bg-white border-gray-300 mb-4 rounded overflow-hidden">
                     <div className="p-4">
@@ -58,10 +77,9 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
                     </div>
                     <div className="p-4">
                         <div className="flex items-center space-x-2">
-                            {/* Utilizar el color rojo si el post está liked */}
                             <button
                                 className={`text-xs text-gray-500 ${likedPosts[index] ? 'text-red-500' : ''}`}
-                                onClick={() => handleLike( index )}
+                                onClick={() => handleLike( index, post.id )}
                             >
                                 Like
                             </button>
