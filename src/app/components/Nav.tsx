@@ -11,15 +11,8 @@ interface User {
     };
 }
 
+
 const Nav: React.FC<User> = ( { user } ) => {
-
-    useEffect( () => {
-        if ( user && user.id !== undefined && user.id !== null ) {
-            localStorage.setItem( 'userId', user.id.toString() );
-        }
-    }, [user] );
-
-
     const [isMenuOpen, setIsMenuOpen] = useState( false );
 
     const toggleMenu = () => {
@@ -31,6 +24,12 @@ const Nav: React.FC<User> = ( { user } ) => {
         closeSession();
 
     };
+
+    useEffect( () => {
+        if ( user && user.id !== undefined && user.id !== null ) {
+            localStorage.setItem( 'userId', user.id.toString() );
+        }
+    }, [] );
 
     return (
         <div >
