@@ -7,7 +7,6 @@ import { Input, Button } from 'antd';
 import { CommentOutlined, HeartOutlined, SendOutlined } from '@ant-design/icons';
 import { Post } from '@/app/interfaces/types';
 import { addComment } from '@/app/api/post/comment';
-import { getPost } from '../api/post/myPost';
 
 const { TextArea } = Input;
 
@@ -16,6 +15,7 @@ interface PostListProps {
 }
 
 const PostList: React.FC<PostListProps> = ( { posts } ) => {
+
     const [likes, setLikes] = useState<number[]>( [] );
     const [likedPosts, setLikedPosts] = useState<boolean[]>( [] );
     const [newComment, setNewComment] = useState<string>( '' );
@@ -31,7 +31,8 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
         );
         //que se actualice el nuevo comentario 
         setShowComments( new Array( posts.length ).fill( false ) );
-    }, [posts, newComment] );
+
+    }, [posts] );
 
     const handleLike = async ( index: number, postId: number ) => {
         try {
@@ -56,6 +57,8 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
             }
 
             const response = await addComment( postId, newComment );
+
+            // Actualizar el estado de los comentarios
             const updatedPosts = [...posts];
             updatedPosts[index].comments.push( response );
 
