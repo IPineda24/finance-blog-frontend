@@ -1,0 +1,13 @@
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: white !important;
+  border-color: #3d7e41;
+}
+
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ) {
+  color: white !important;
+  border-color: #3d7e41;
+}
