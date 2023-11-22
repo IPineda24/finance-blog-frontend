@@ -32,12 +32,12 @@ const getPost = async (): Promise<Post[]> => {
     }
 };
 
-const updatePost = async (postId: number, updatedData: any): Promise<boolean> => {
+const updatePost = async (postId: number, updatedData: object): Promise<boolean> => {
     try {
     const token = await getToken();
 
-    const response = await axios.put(
-        `${baseUrl}/post/edit/${postId}`,
+    const response = await axios.patch(
+        `${baseUrl}/post/${postId}`,
         updatedData,
         {
         headers: {
@@ -47,7 +47,7 @@ const updatePost = async (postId: number, updatedData: any): Promise<boolean> =>
         }
     );
 
-    return response.data.success; // Assuming your API returns a success property
+    return response.data; 
     } catch (error) {
     return Promise.reject(error);
     }
