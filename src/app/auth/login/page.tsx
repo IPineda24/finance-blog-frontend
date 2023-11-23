@@ -10,8 +10,6 @@ interface FormValues {
     password: string;
 }
 
-
-
 export default function Page() {
 
     const onFinish = async ( values: FormValues ) => {
@@ -33,17 +31,17 @@ export default function Page() {
     return (
         <div className="flex h-screen">
             {/* Fondo Verde (Oculto en dispositivos móviles) */}
-            <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center lg:bg-green-700">
+            <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center bgo">
                 <Image
                     src="/FToe.svg"
                     alt="Fondo Verde"
-                    width={300}
-                    height={300}
+                    width={200}
+                    height={200}
                 />
             </div>
 
             {/* Fondo Negro con Formulario */}
-            <div className="w-full md:flex-1 flex items-center justify-center p-8 bg-gray-800">
+            <div className="w-full md:flex-1 flex items-center justify-center p-8 bgo">
                 <Form
                     name="basic"
                     labelCol={{ span: 8 }}
