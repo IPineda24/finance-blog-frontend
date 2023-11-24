@@ -31,15 +31,13 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
 
 
     useEffect( () => {
-        const userId = localStorage.getItem( 'userId' );
         setLikes( posts.map( ( post ) => post.likes ) );
         setLikedPosts(
             posts.map( ( post ) =>
                 post.receivedLikes.some( ( like ) => like.userId === userId )
             )
         );
-        //que se actualice el nuevo comentario 
-        setShowComments( new Array( posts.length ).fill( false ) );
+
 
     }, [posts] );
 
@@ -64,10 +62,9 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
             if ( newComment.trim() === '' ) {
                 return;
             }
+            toggleComments( 0 );
 
             const response = await addComment( postId, newComment );
-
-            // Actualizar el estado de los comentarios
             const updatedPosts = [...posts];
             updatedPosts[index].comments.push( response );
 
