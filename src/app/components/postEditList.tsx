@@ -135,6 +135,7 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate, onDel
                                 Editar
                             </button>
                             <Popconfirm
+                                okType='danger'
                                 title="¿Estás seguro de eliminar esta publicación?"
                                 onConfirm={() => handleDeletePost( post.id )}
                                 okText="Sí"

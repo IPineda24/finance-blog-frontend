@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: #070725;
+  border-color: #d9ac59;
+}
+
+:where(.css-dev-only-do-not-override-nllxry).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ) {
+}
+
 .background-global {
   background-color: #070725;
 }
