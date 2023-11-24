@@ -29,19 +29,21 @@ export default function Page() {
     };
 
     return (
-        <div className="flex h-screen">
+        <div className="flex flex-row h-screen  bgo">
             {/* Fondo Verde (Oculto en dispositivos móviles) */}
-            <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center bgo">
+            <div className="hidden basis-3/4 lg:flex lg:flex-1 lg:items-center lg:justify-center bgo22 bgo rounded-br-full">
                 <Image
                     src="/FToe.svg"
                     alt="Fondo Verde"
-                    width={200}
-                    height={200}
+                    width={300}
+                    height={300}
+                    priority={true}
+                    quality={100}
                 />
             </div>
 
             {/* Fondo Negro con Formulario */}
-            <div className="w-full md:flex-1 flex items-center justify-center p-8 bgo">
+            <div className="w-full basis-1/4 md:flex-1 flex items-center justify-center p-8 bgo ">
                 <Form
                     name="basic"
                     labelCol={{ span: 8 }}
@@ -82,7 +84,7 @@ export default function Page() {
                             <Button
                                 type="default"
                                 htmlType="submit"
-                                className=" w-full text-white font-semibold bg-green-700 hover:bg-green-800 border-green-800 hover:text-white"
+                                className=" w-full bgo2"
                             >
                                 Submit
                             </Button>

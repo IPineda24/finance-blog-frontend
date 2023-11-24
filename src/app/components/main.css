@@ -10,15 +10,18 @@
   backgorung-color: #478a4c;
 }
 
-.accent2 {
+.accentsad2 {
   backgorung-color: #d9ac59 !important;
 }
 
 .text-primary {
-  color: #ffffff;
+  color: #478a4c;
 }
 .text-secondary {
-  color: #66d96e;
+  color: #d9ac59;
+}
+.text-secondary:hover {
+  color: white;
 }
 .text-accent {
   color: #d9ac59;
@@ -28,15 +31,13 @@
   background-color: #060826 !important;
 }
 .bgo2 {
-  background-color: #478a4c !important;
+  background-color: trasparent !important;
 }
 .bgo22 {
   background-color: #478a4c !important;
 }
-.bgo24 {
-  background-color: #d9ac59 !important;
-}
 
-.bgo2:hover {
-  background-color: #d9ac59 !important;
+.bgo3:hover {
+  color: #478a4c !important;
+  text-decoration: underline !important;
 }

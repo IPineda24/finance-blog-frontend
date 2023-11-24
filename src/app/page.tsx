@@ -6,20 +6,26 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <Image
-        src="/FToe.svg"
+        src="/logo.svg"
         alt="Fortech"
-        width={50}
-        height={50}
-        className={styles.logo}
+        width={60}
+        height={60}
+
+
 
       />
 
 
       <h1 className={styles.title}>Fortech</h1>
-      <p className={styles.subtitle}>Tu plataforma para publicar contenido financiero</p>
-      <Link href="/auth/register">
-        <button className={styles.ctaButton}>Empezar</button>
-      </Link>
+      <p className={styles.subtitle}>Tu plataforma para publicar contenido <span className='text-accent'>financiero</span></p>
+      <div className='flex justify-between items-center'>
+        <Link href="/auth/register">
+          <button className={styles.ctaButton}>Registrarme </button>
+        </Link>
+        <Link className='pl-4' href="/auth/login">
+          <button className={styles.ctaButton2}>Iniciar sesion </button>
+        </Link>
+      </div>
     </main>
 
   );

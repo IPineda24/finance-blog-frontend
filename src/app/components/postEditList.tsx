@@ -62,7 +62,7 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) =>
     };
 
     return (
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto mt-16">
             {posts.map( ( post: Post ) => (
                 <div key={post.id} className="border bg-white border-gray-300 mb-4 rounded overflow-hidden">
                     {/* ... (existing code) */}
@@ -96,11 +96,11 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) =>
                                     <Input.TextArea placeholder="Description" />
                                 </Form.Item>
                                 <Form.Item>
-                                    <Button type="primary" htmlType="submit">
-                                        Update
+                                    <Button type="default" htmlType="submit" className='bgo22'>
+                                        Actualizar
                                     </Button>
-                                    <Button onClick={handleCancelEdit} style={{ marginLeft: 8 }}>
-                                        Cancel
+                                    <Button danger type="primary" ghost onClick={handleCancelEdit} style={{ marginLeft: 8 }}>
+                                        Cancelar
                                     </Button>
                                 </Form.Item>
                             </Form>
@@ -113,8 +113,8 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) =>
                     </div>
                     <div className="p-4">
                         <div className="flex items-center space-x-2">
-                            <button className="text-xs text-gray-500 ml-2" onClick={() => handleEditPost( post.id )}>
-                                Edit
+                            <button className="text-xs text-gray-500 ml-2 " onClick={() => handleEditPost( post.id )}>
+                                Editar
                             </button>
                         </div>
                     </div>

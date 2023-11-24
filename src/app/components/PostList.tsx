@@ -20,9 +20,10 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
     const [likedPosts, setLikedPosts] = useState<boolean[]>( [] );
     const [newComment, setNewComment] = useState<string>( '' );
     const [showComments, setShowComments] = useState<boolean[]>( [] );
-    const userId = localStorage.getItem( 'userId' );
+
 
     useEffect( () => {
+        const userId = localStorage.getItem( 'userId' );
         setLikes( posts.map( ( post ) => post.likes ) );
         setLikedPosts(
             posts.map( ( post ) =>
@@ -134,7 +135,7 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
                                 placeholder="Añadir un comentario..."
                                 onChange={( e ) => setNewComment( e.target.value )}
                             />
-                            <Button icon={<SendOutlined />} className='text-xs' type="default" onClick={() => handleAddComment( index, post.id )}>
+                            <Button icon={<SendOutlined />} className='text-xs bg-amber-500' onClick={() => handleAddComment( index, post.id )}>
 
 
                             </Button>

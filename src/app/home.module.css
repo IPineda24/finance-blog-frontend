@@ -5,7 +5,7 @@
   justify-content: center;
   height: 100vh;
   background-color: #060826;
-  color: #66d96e;
+  color: #238c48;
 }
 
 .title {
@@ -31,4 +31,43 @@
 
 .ctaButton:hover {
   background-color: #d9ac59;
+}
+
+.ctaButton2 {
+  background-color: trasparent;
+  border: 1px solid #238c48;
+  color: #238c48;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ctaButton2:hover {
+  background-color: trasparent;
+  border: 1px solid #d9ac59;
+  color: #d9ac59;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.subtitle2 {
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el ratón sobre el subtítulo */
+.subtitle2:hover {
+  transform: translateX(
+    5px
+  ); /* Puedes ajustar la cantidad de movimiento según tu preferencia */
+}
+
+/* Estilo para resaltar el texto "financiero" al pasar el ratón sobre él */
+.text-accent:hover {
+  color: #ff9900; /* Cambia el color a tu elección */
 }

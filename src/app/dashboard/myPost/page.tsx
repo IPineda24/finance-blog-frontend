@@ -38,9 +38,9 @@ const MyPostPage: React.FC = () => {
     };
 
     return (
-        <div className="bg-gray-800">
+        <div className="bg-gray-800 ">
             <div className="bg-gray-800">
-                <h1 className="text-2xl font-bold text-white text-center mb-6 h-2 bg-green-800">My Posts</h1>
+                <h1 className="text-2xl font-bold text-white text-center mb-6 h-2 underline w-full my-8 ">Mis Publicaciones</h1>
                 <PostEditList posts={posts} onPostUpdate={updatePosts} />
             </div>
         </div>

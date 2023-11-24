@@ -30,9 +30,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bgo">
       {/* Fondo Verde (Oculto en dispositivos móviles) */}
-      <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center bgo">
+      <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center bgo rounded-br-full bgo22">
         <Image src="/FToe.svg" alt="Fondo Verde" width={300} height={300} />
       </div>
 
@@ -49,10 +49,10 @@ export default function RegisterPage() {
           autoComplete="off"
           className="bg-gray-700 p-6 rounded-lg shadow-md text-white w-full lg:max-w-md"
         >
-          <h1 className="text-2xl font-bold mb-6">Register</h1>
+          <h1 className="text-2xl font-bold mb-6">Crear cuenta</h1>
 
           <Form.Item
-            label="Username"
+            label="Usuario"
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }, { pattern: /^[a-zA-Z0-9]+$/, message: 'El nombre de usuario no puede contener espacios en blanco.' }, { min: 3, message: 'El nombre de usuario debe contener al menos 3 caracteres.' }, { max: 20, message: 'El nombre de usuario debe contener menos de 20 caracteres.' }, { type: 'string' }, { whitespace: false }, { pattern: /^[a-zA-Z0-9]+$/, message: 'El nombre de usuario no puede contener espacios en blanco.' }]}
           >
@@ -60,7 +60,7 @@ export default function RegisterPage() {
           </Form.Item>
 
           <Form.Item
-            label="Email"
+            label="Correo"
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }, { type: 'email' }, { whitespace: false }, { pattern: /^\S+@\S+\.\S+$/, message: 'El email no puede contener espacios en blanco.' }, { max: 50 }]}
           >
@@ -68,7 +68,7 @@ export default function RegisterPage() {
           </Form.Item>
 
           <Form.Item
-            label="Password"
+            label="Contraseña"
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }, { min: 6 }, { max: 20 }, { type: 'string' }, { whitespace: false }, { pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/, message: 'La contraseña debe contener al menos 6 caracteres, incluyendo mayúsculas/minúsculas y números.' }]}
           >
@@ -81,9 +81,9 @@ export default function RegisterPage() {
             <Button
               type="default"
               htmlType="submit"
-              className="w-full text-white font-semibold bg-green-700 hover:bg-green-800 border-green-800 hover:text-white"
+              className="w-full bgo2"
             >
-              Submit
+              Registrarme
             </Button>
           </Form.Item>
         </Form>

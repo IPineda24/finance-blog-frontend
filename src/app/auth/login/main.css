@@ -2,16 +2,28 @@
     .ant-btn-disabled
   ):hover {
   color: white !important;
-  border-color: #3d7e41;
+
+  border-color: #d9ac59;
 }
 
 :where(.css-dev-only-do-not-override-nllxry).ant-btn-default:not(:disabled):not(
     .ant-btn-disabled
   ) {
   color: white !important;
-  border-color: #3d7e41;
+
+  border-color: #478a4c;
 }
 
 .bgo {
   background-color: #060826 !important;
+}
+.bgo2 {
+  background-color: #478a4c !important;
+}
+.bgo22 {
+  background-color: #478a4c !important;
+}
+
+.bgo2:hover {
+  background-color: #d9ac59 !important;
 }
