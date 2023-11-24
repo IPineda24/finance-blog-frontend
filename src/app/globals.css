@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.background-global {
+  background-color: #070725;
+}
+
+.primary {
+  backgorung-color: #478a4c;
+}
+
+.accent2 {
+  backgorung-color: #d9ac59 !important;
+}
+
+.text-primary {
+  color: #ffffff;
+}
+.text-secondary {
+  color: #66d96e;
+}
+.text-accent {
+  color: #d9ac59;
+}
+
+.bgo {
+  background-color: #060826 !important;
+}
+.bgo2 {
+  background-color: #478a4c !important;
+}
+.bgo22 {
+  background-color: #478a4c !important;
+}
+.bgo24 {
+  background-color: #d9ac59 !important;
+}
+
+.bgo2:hover {
+  background-color: #d9ac59 !important;
+}

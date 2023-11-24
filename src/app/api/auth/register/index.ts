@@ -9,12 +9,6 @@ const register = async ( data: object ) => {
         const response = await axios.post( `${baseUrl}/auth/register`, data );
         const origin = window.location.origin;
         const loginUrl = `${origin}/auth/login`;
-
-            Swal.fire({
-            title: "Cuenta creada con éxito",
-            text: "Redireccionando al inicio de sesión",
-            icon: "success"
-            } );
         
         setTimeout(() => {
             window.location.href = loginUrl;

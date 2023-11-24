@@ -16,7 +16,7 @@ export default async function DashboardLayout( {
             <html lang="en" suppressHydrationWarning={true} >
 
                 <body>
-                    <header >
+                    <header className='sticky top-0 z-50' >
                         <Nav user={await isLogin} />
                     </header>
                     {children}

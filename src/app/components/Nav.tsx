@@ -3,7 +3,8 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import closeSession from '@/app/utils/deleteToken';
-import exp from 'constants';
+import './main.css';
+import { CloseOutlined, HeartOutlined, HomeOutlined, UploadOutlined } from '@ant-design/icons';
 interface User {
     user: {
         id: number;
@@ -32,19 +33,20 @@ const Nav: React.FC<User> = ( { user } ) => {
     }, [] );
 
     return (
-        <div >
+        <div className='w-full sticky top-0 ' >
             <div>
-                <nav className="bg-gray-800 p-4">
+                <nav className="bg-gray-800 p-4 sticky ">
                     <div className="container mx-auto flex justify-between items-center">
                         <div className='flex justify-center items-center gap-2'>
                             <Image
                                 src="/logo.svg"
                                 alt="Fondo Verde"
                                 width={50}
-                                height={50}
+                                height={10}
+                                className='h-full w-13'
                             />
 
-                            <div className='p-4 text-green-500'>{user.username}</div>
+                            <div className='p-4 text-primary'>Bienvenido @{user.username}</div>
                         </div>
 
                         {/* Menú de hamburguesa para dispositivos móviles */}
@@ -71,27 +73,27 @@ const Nav: React.FC<User> = ( { user } ) => {
                         </div>
 
                         {/* Menú de navegación */}
-                        <ul className={`lg:flex lg:items-center  ${isMenuOpen ? 'block absolute' : 'hidden '}  top-16 left-0 bg-gray-800 md:flex md:items-center md:justify-center w-full md:w-auto`}>
+                        <ul className={`  ${isMenuOpen ? 'block absolute' : 'hidden '}  top-16 left-0 bg-gray-800 lg:flex lg:items-center lg:justify-center w-full lg:w-auto`}>
                             <li>
                                 <Link href="/dashboard">
-                                    <div className="text-white block py-2 px-4 hover:bg-gray-700">Publicaciones 🏠</div>
+                                    <div className="text-white block py-2 px-4 bgo3 text-primary " > <HomeOutlined /> Inicio</div>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/dashboard/createPost">
-                                    <div className="text-white block py-2 px-4 hover:bg-gray-700">Crear Post ⬆️</div>
+                                    <div className="text-white block py-2 px-4 bgo3 text-primary" ><UploadOutlined /> Crear Publicación </div>
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/dashboard/myPost">
-                                    <div className="text-white block py-2 px-4 hover:bg-gray-700">Mis Post ❤️</div>
+                                    <div className="text-white block py-2 px-4 bgo3 text-primary"><HeartOutlined /> Mis publicaciones </div>
                                 </Link>
                             </li>
                             <li className="md:ml-auto">
                                 <Link
                                     onClick={close}
                                     href="/auth/login" >
-                                    <div className="text-white block py-2 px-4 hover:bg-gray-700">Cerrar Sesión ☠️</div>
+                                    <div className="text-white block py-2 px-4 bgo3 text-primary"> <CloseOutlined /> Cerrar Sesión</div>
                                 </Link>
                             </li>
                         </ul>

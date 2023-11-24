@@ -6,11 +6,6 @@ import setCookies from "./setToken";
 const login = async ( data: object ) => {
     try {
         const response = await axios.post( `${baseUrl}/auth/log-in`, data );
-        Swal.fire({
-            title: "Inicio de sesión exitoso.",
-            text: "Redireccionando a la pantalla principal",
-            icon: "success"
-});
         setCookies(  response.data.access_token.toString() );
         const origin = window.location.origin;
         

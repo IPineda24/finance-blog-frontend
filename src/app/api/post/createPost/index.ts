@@ -19,11 +19,6 @@ const createPost = async (postData :PostData) => {
         'Content-Type': 'application/json',
         },
     } );
-        Swal.fire({
-            title: "post creado con éxito.",
-            text: "Redireccionando a la pantalla principal",
-            icon: "success"
-});
         const origin = window.location.origin;
         const loginUrl = `${origin}/dashboard`;
 

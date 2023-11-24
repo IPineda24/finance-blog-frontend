@@ -56,7 +56,7 @@ const CreatePost: React.FC = () => {
                             <Button
                                 type="default"
                                 htmlType="submit"
-                                className="w-full text-white font-semibold bg-green-700 hover:bg-green-800 border-green-800 hover:text-white"
+                                className="w-full text-white font-semibold bgo2"
                             >
                                 Crear Post
                             </Button>
