@@ -4,6 +4,7 @@
   ],
   "hints": {
     "typescript-config/is-valid": "off",
+    "axe/aria-allowed-attr": "off",
     "axe/name-role-value": [
       "default",
       {
