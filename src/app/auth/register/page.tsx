@@ -4,6 +4,7 @@ import { Button, Form, Input } from 'antd';
 import Swal from 'sweetalert2';
 import Image from 'next/image';
 import './main.css'; // Import the same styles used in the login component
+import Link from 'next/link';
 
 interface FormValues {
   username: string;
@@ -33,7 +34,7 @@ export default function RegisterPage() {
     <div className="flex h-screen bgo">
       {/* Fondo Verde (Oculto en dispositivos móviles) */}
       <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center bgo rounded-br-full bgo22">
-        <Image src="/FToe.svg" alt="Fondo Verde" width={300} height={300} />
+        <Image src="/FToe.svg" alt="Fondo Verde" width={300} height={300} className='w-80 h-80' />
       </div>
 
       {/* Fondo Negro con Formulario */}
@@ -86,6 +87,9 @@ export default function RegisterPage() {
               Registrarme
             </Button>
           </Form.Item>
+          <Link className='textdd' href="/auth/login">
+            Iniciar sesion
+          </Link>
         </Form>
       </div>
     </div>

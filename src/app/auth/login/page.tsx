@@ -4,6 +4,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import Swal from 'sweetalert2';
 import Image from 'next/image'
 import './main.css';
+import Link from 'next/link';
 
 interface FormValues {
     email: string;
@@ -37,8 +38,7 @@ export default function Page() {
                     alt="Fondo Verde"
                     width={300}
                     height={300}
-                    priority={true}
-                    quality={100}
+                    className='h-80 w-80'
                 />
             </div>
 
@@ -89,6 +89,9 @@ export default function Page() {
                                 Submit
                             </Button>
                         </Form.Item>
+                        <Link className='textdd' href="/auth/register">
+                            Crear cuenta
+                        </Link>
                     </div>
                 </Form>
             </div>

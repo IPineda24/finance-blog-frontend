@@ -10,9 +10,7 @@ export default function Home() {
         alt="Fortech"
         width={60}
         height={60}
-
-
-
+        className='h-20 w-20'
       />
 
 

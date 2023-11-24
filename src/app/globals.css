@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .background-global {
-  background-color: #070725;
+  background-color: #212836;
 }
 
 .primary {
@@ -25,7 +25,7 @@
 }
 
 .bgo {
-  background-color: #060826 !important;
+  background-color: #212836 !important;
 }
 .bgo2 {
   background-color: #478a4c !important;

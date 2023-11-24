@@ -15,7 +15,7 @@
 }
 
 .bgo {
-  background-color: #060826 !important;
+  background-color: #212836 !important;
 }
 .bgo2 {
   background-color: #478a4c !important;
@@ -26,4 +26,12 @@
 
 .bgo2:hover {
   background-color: #d9ac59 !important;
+}
+
+.textdd {
+  color: white !important;
+}
+
+.textdd:hover {
+  color: #d9ac59 !important;
 }
