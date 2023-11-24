@@ -53,4 +53,24 @@ const updatePost = async (postId: number, updatedData: object): Promise<boolean>
     }
 };
 
-export { getPost, updatePost };
+const deletePost = async (postId: number): Promise<boolean> => {
+    try {
+        const token = await getToken();
+
+        const response = await axios.delete(
+            `${baseUrl}/post/${postId}`,
+            {
+                headers: {
+                    'accept': '*',
+                    'Authorization': `Bearer ${token}`,
+                },
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        return Promise.reject(error);
+    }
+};
+
+export { getPost, updatePost, deletePost };

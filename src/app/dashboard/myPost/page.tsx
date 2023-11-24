@@ -2,7 +2,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import PostEditList from '@/app/components/postEditList';
-import { getPost } from '@/app/api/post/myPost';
+import { deletePost, getPost } from '@/app/api/post/myPost';
 
 interface Post {
     id: number;
@@ -31,17 +31,20 @@ const MyPostPage: React.FC = () => {
 
     useEffect( () => {
         fetchPosts();
-    }, [] );
+    }, [fetchPosts] );
 
     const updatePosts = async () => {
         await fetchPosts();
     };
+    const deletePost = async () => {
+        await fetchPosts();
+    }
 
     return (
         <div className="bg-gray-800 ">
             <div className="bg-gray-800">
                 <h1 className="text-2xl font-bold text-white text-center mb-6 h-2 underline w-full my-8 ">Mis Publicaciones</h1>
-                <PostEditList posts={posts} onPostUpdate={updatePosts} />
+                <PostEditList posts={posts} onPostUpdate={updatePosts} onDeletePost={deletePost} />
             </div>
         </div>
     );

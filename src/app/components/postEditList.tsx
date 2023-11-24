@@ -1,7 +1,7 @@
 // components/PostEditList.tsx
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
-import { updatePost } from '@/app/api/post/myPost';
+import { Form, Input, Button, message, Popconfirm } from 'antd';
+import { updatePost, deletePost } from '@/app/api/post/myPost';
 
 interface Post {
     id: number;
@@ -18,9 +18,10 @@ interface Post {
 interface PostEditListProps {
     posts: Post[];
     onPostUpdate: () => Promise<void>;
+    onDeletePost: () => Promise<void>;
 }
 
-const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) => {
+const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate, onDeletePost } ) => {
     const [form] = Form.useForm();
     const [editingPostId, setEditingPostId] = useState<number | null>( null );
 
@@ -49,7 +50,7 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) =>
             console.log( editingPostId!, valuesFormatted );
             const success = await updatePost( editingPostId!, valuesFormatted );
             if ( success ) {
-                console.log( 'Post updated successfully' );
+                message.success( 'Post deleted successfully' );
                 handleCancelEdit();
                 // Llamar a la función de actualización de la lista después de la edición exitosa
                 await onPostUpdate();
@@ -61,6 +62,23 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) =>
         }
     };
 
+
+    const handleDeletePost = async ( postId: number ) => {
+        try {
+            // Call the deletePost function from your API
+            await deletePost( postId );
+
+            // Show a success message
+            message.success( 'Post deleted successfully' );
+
+            // Update the posts after deletion
+            await onPostUpdate();
+        } catch ( error ) {
+            console.error( 'Error deleting post:', error );
+            // Handle error, e.g., show an error message
+            message.error( 'Failed to delete post' );
+        }
+    };
     return (
         <div className="max-w-2xl mx-auto mt-16">
             {posts.map( ( post: Post ) => (
@@ -116,6 +134,14 @@ const PostEditList: React.FC<PostEditListProps> = ( { posts, onPostUpdate } ) =>
                             <button className="text-xs text-gray-500 ml-2 " onClick={() => handleEditPost( post.id )}>
                                 Editar
                             </button>
+                            <Popconfirm
+                                title="¿Estás seguro de eliminar esta publicación?"
+                                onConfirm={() => handleDeletePost( post.id )}
+                                okText="Sí"
+                                cancelText="No"
+                            >
+                                <button className="text-xs text-red-500 ml-2">Eliminar</button>
+                            </Popconfirm>
                         </div>
                     </div>
                 </div>

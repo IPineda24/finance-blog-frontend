@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import handleLikes from '@/app/api/post/like';
 import { format } from 'date-fns';
 import { Input, Button } from 'antd';
-import { CommentOutlined, HeartOutlined, SendOutlined } from '@ant-design/icons';
+import { CommentOutlined, DeleteOutlined, HeartOutlined, SendOutlined } from '@ant-design/icons';
 import { Post } from '@/app/interfaces/types';
-import { addComment } from '@/app/api/post/comment';
+import { addComment, deleteComment } from '@/app/api/post/comment';
 
 const { TextArea } = Input;
 
@@ -15,7 +15,15 @@ interface PostListProps {
 }
 
 const PostList: React.FC<PostListProps> = ( { posts } ) => {
+    const [userId, setUserId] = useState<string | null>( null );
 
+    useEffect( () => {
+        // Ensure that we are on the client side
+        if ( typeof window !== 'undefined' ) {
+            const storedUserId = localStorage.getItem( 'userId' );
+            setUserId( storedUserId );
+        }
+    }, [] );
     const [likes, setLikes] = useState<number[]>( [] );
     const [likedPosts, setLikedPosts] = useState<boolean[]>( [] );
     const [newComment, setNewComment] = useState<string>( '' );
@@ -76,6 +84,18 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
         setShowComments( newShowComments );
     };
 
+    const handleDeleteComment = async ( commentId: string, postId: number ) => {
+        try {
+            // Lógica para eliminar el comentario
+            await deleteComment( commentId );
+
+            // Después de eliminar, puedes recargar la página o actualizar la lista de comentarios
+            window.location.reload();
+        } catch ( error ) {
+            console.error( 'Error al eliminar comentario', error );
+        }
+    };
+
 
 
     return (
@@ -108,7 +128,11 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
                                 {showComments[index] ? '' : ''}
                             </Button>
                         </div>
-                        <p className="text-xs text-gray-500">{likes[index]} Me gusta</p>
+
+                        <div className='flex'>
+                            <p className="text-xs mx-4 text-gray-500">{likes[index]} Me gusta</p>
+                            <p className="text-xs text-gray-500">{post.comments.length} Comentarios</p>
+                        </div>
                     </div>
 
                     {/* Comentarios */}
@@ -117,10 +141,22 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
 
                             {( !post.comments || post.comments.length === 0 ) ? 'No hay comentarios' : ''}
                             {post.comments.map( ( comment ) => (
-                                <div key={comment.id} className="mb-4">
-                                    <p className="text-sm text-gray-700 font-semibold">@{comment.user.username}</p>
-                                    <p className="text-gray-700 text-xs">{comment.comment}</p>
-                                    <span className="text-gray-500 block text-xs">{format( new Date( comment.createdAt ), 'dd/MM/yyyy h:mm a' )}</span>
+                                <div key={comment.id} className="mb-4 flex w-full justify-between pr-8">
+                                    <div>
+                                        <p className="text-sm text-gray-700 font-semibold">@{comment.user.username}</p>
+                                        <p className="text-gray-700 text-xs">{comment.comment}</p>
+                                        <span className="text-gray-500 block text-xs">{format( new Date( comment.createdAt ), 'dd/MM/yyyy h:mm a' )}</span>
+                                    </div>
+                                    <div>
+                                        {userId === comment.user.id && (
+                                            <button
+                                                className="text-xs text-red-500 cursor-pointer"
+                                                onClick={() => handleDeleteComment( comment.id, post.id )}
+                                            >
+                                                <DeleteOutlined />
+                                            </button>
+                                        )}
+                                    </div>
                                 </div>
                             ) )}
                         </div>
@@ -135,7 +171,7 @@ const PostList: React.FC<PostListProps> = ( { posts } ) => {
                                 placeholder="Añadir un comentario..."
                                 onChange={( e ) => setNewComment( e.target.value )}
                             />
-                            <Button icon={<SendOutlined />} className='text-xs bg-amber-500' onClick={() => handleAddComment( index, post.id )}>
+                            <Button icon={<SendOutlined />} className='text-xs bgo24' onClick={() => handleAddComment( index, post.id )}>
 
 
                             </Button>

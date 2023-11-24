@@ -18,3 +18,16 @@ export const addComment = async (postId:number, comment:string) => {
     throw new Error('Error al agregar comentario');
     }
 };
+
+export const deleteComment = async (commentId: string) => {
+    try {
+        const token = await getToken();
+        await axios.delete(`${baseUrl}/comments/${commentId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    } catch (error) {
+        throw new Error('Error al eliminar comentario');
+    }
+};
